@@ -34,24 +34,8 @@ module.exports = {
     },
   ],
 
-  actions: ({ test }) => {
+  actions: () => {
     const actions = [];
-
-    if (test) {
-      // backup files that will be modified so we can restore them
-      actions.push({
-        type: 'backup',
-        path: '../../app',
-        file: 'i18n.js',
-      });
-
-      actions.push({
-        type: 'backup',
-        path: '../../app',
-        file: 'app.js',
-      });
-    }
-
     actions.push({
       type: 'modify',
       path: '../../app/i18n.js',
@@ -94,17 +78,14 @@ module.exports = {
       pattern: /(import\('intl\/locale-data\/jsonp\/[a-z]+\.js'\),\n)(?!.*import\('intl\/locale-data\/jsonp\/[a-z]+\.js'\),)/g,
       templateFile: './language/polyfill-intl-locale.hbs',
     });
-
-    if (!test) {
-      actions.push(() => {
-        const cmd = 'npm run extract-intl';
-        exec(cmd, (err, result) => {
-          if (err) throw err;
-          process.stdout.write(result);
-        });
-        return 'modify translation messages';
+    actions.push(() => {
+      const cmd = 'npm run extract-intl';
+      exec(cmd, (err, result) => {
+        if (err) throw err;
+        process.stdout.write(result);
       });
-    }
+      return 'modify translation messages';
+    });
 
     return actions;
   },

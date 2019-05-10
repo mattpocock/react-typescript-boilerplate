@@ -26,61 +26,34 @@ module.exports = {
         return 'The name is required';
       },
     },
-    {
-      type: 'confirm',
-      name: 'memo',
-      default: false,
-      message: 'Do you want to wrap your component in React.memo?',
-    },
-    {
-      type: 'confirm',
-      name: 'wantMessages',
-      default: true,
-      message: 'Do you want i18n messages (i.e. will this component use text)?',
-    },
-    {
-      type: 'confirm',
-      name: 'wantLoadable',
-      default: false,
-      message: 'Do you want to load the component asynchronously?',
-    },
   ],
-  actions: data => {
-    // Generate index.js and index.test.js
+  actions: () => {
     const actions = [
       {
         type: 'add',
-        path: '../../app/components/{{properCase name}}/index.js',
-        templateFile: './component/index.js.hbs',
+        path: '../../app/components/{{properCase name}}/index.tsx',
+        templateFile: './component/stateless.tsx.hbs',
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../../app/components/{{properCase name}}/tests/index.test.js',
-        templateFile: './component/test.js.hbs',
+        path: '../../app/components/{{properCase name}}/stories/index.stories.tsx',
+        templateFile: './component/index.stories.tsx.hbs',
         abortOnFail: true,
       },
     ];
-
-    // If the user wants i18n messages
-    if (data.wantMessages) {
-      actions.push({
-        type: 'add',
-        path: '../../app/components/{{properCase name}}/messages.js',
-        templateFile: './component/messages.js.hbs',
-        abortOnFail: true,
-      });
-    }
-
-    // If the user wants Loadable.js to load the component asynchronously
-    if (data.wantLoadable) {
-      actions.push({
-        type: 'add',
-        path: '../../app/components/{{properCase name}}/Loadable.js',
-        templateFile: './component/loadable.js.hbs',
-        abortOnFail: true,
-      });
-    }
+    actions.push({
+      type: 'add',
+      path: '../../app/components/{{properCase name}}/messages.ts',
+      templateFile: './component/messages.ts.hbs',
+      abortOnFail: true,
+    });
+    actions.push({
+      type: 'add',
+      path: '../../app/components/{{properCase name}}/Loadable.tsx',
+      templateFile: './component/loadable.tsx.hbs',
+      abortOnFail: true,
+    });
 
     actions.push({
       type: 'prettify',

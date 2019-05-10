@@ -1,0 +1,30 @@
+/**
+* Injects reducer into useReduxState
+*
+*/
+
+import useReduxState from 'utils/hooks/useReduxState';
+
+const use{{ properCase name }}State = () =>
+  useReduxState<State, Actions>({
+    key: '{{ properCase name }}',
+    initialState: {
+      payload: null
+    },
+    actions: {
+      myAction: (state, payload) => ({
+        ...state,
+        payload
+      }),
+    },
+  });
+
+interface State {
+  payload: any;
+}
+
+interface Actions {
+  myAction: (payload: any) => void;
+}
+
+export default use{{ properCase name }}State;
