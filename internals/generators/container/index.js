@@ -24,11 +24,11 @@ module.exports = {
       },
     },
   ],
-  actions: () => {
+  actions: (data) => {
     const actions = [
       {
         type: 'add',
-        path: path.resolve(__dirname, '../../../app/containers/{{properCase name}}/index.tsx'),
+        path: path.resolve(__dirname, '../../../app/containers/'+ data.name + '/index.tsx'),
         templateFile: './container/class.tsx.hbs',
         abortOnFail: true,
       },
@@ -36,20 +36,20 @@ module.exports = {
 
     actions.push({
       type: 'add',
-      path: path.resolve(__dirname, '../../../app/containers/{{properCase name}}/use{{properCase name}}State.ts'),
+      path: path.resolve(__dirname, '../../../app/containers/'+ data.name + '/use'+ data.name + 'State.ts'),
       templateFile: './container/useReduxState.ts.hbs',
       abortOnFail: true,
     });
 
     actions.push({
       type: 'add',
-      path: path.resolve(__dirname, '../../../app/containers/{{properCase name}}/messages.ts'),
+      path: path.resolve(__dirname, '../../../app/containers/'+ data.name + '/messages.ts'),
       templateFile: './container/messages.ts.hbs',
       abortOnFail: true,
     });
     actions.push({
       type: 'add',
-      path: path.resolve(__dirname, '../../../app/containers/{{properCase name}}/Loadable.tsx'),
+      path: path.resolve(__dirname, '../../../app/containers/'+ data.name + '/Loadable.tsx'),
       templateFile: './component/loadable.tsx.hbs',
       abortOnFail: true,
     });

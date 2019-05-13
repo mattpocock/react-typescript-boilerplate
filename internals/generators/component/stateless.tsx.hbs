@@ -10,12 +10,16 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function {{ properCase name }}() {
+const {{ properCase name }} = ({}: {{ properCase name }}Props) => {
   return (
     <div>
       <FormattedMessage {...messages.header} />
     </div>
   );
+}
+
+export interface {{properCase name}}Props {
+
 }
 
 export default {{ properCase name }};
