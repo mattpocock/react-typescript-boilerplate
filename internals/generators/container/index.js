@@ -30,7 +30,7 @@ module.exports = {
       message: 'Which subfolder of app/containers do you want the container placed in?',
       default: './',
       validate: value => {
-        const location = path.resolve('./app/containers', `${value}`);
+        const location = path.resolve(__dirname, '../../../app/containers', `${value}`);
         if (!fs.existsSync(location)) {
           return `${location} does not exist.`;
         }
@@ -42,7 +42,7 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: path.resolve('./app/containers/', data.location, '{{properCase name}}/index.tsx'),
+        path: path.resolve(__dirname, '../../../app/containers/', data.location, '{{properCase name}}/index.tsx'),
         templateFile: './container/class.tsx.hbs',
         abortOnFail: true,
       },
@@ -50,20 +50,20 @@ module.exports = {
 
     actions.push({
       type: 'add',
-      path: path.resolve('./app/containers/', data.location, '{{properCase name}}/use{{properCase name}}State.ts'),
+      path: path.resolve(__dirname, '../../../app/containers/', data.location, '{{properCase name}}/use{{properCase name}}State.ts'),
       templateFile: './container/useReduxState.ts.hbs',
       abortOnFail: true,
     });
 
     actions.push({
       type: 'add',
-      path: path.resolve('./app/containers/', data.location, '{{properCase name}}/messages.ts'),
+      path: path.resolve(__dirname, '../../../app/containers/', data.location, '{{properCase name}}/messages.ts'),
       templateFile: './container/messages.ts.hbs',
       abortOnFail: true,
     });
     actions.push({
       type: 'add',
-      path: path.resolve('./app/containers/', data.location, '{{properCase name}}/Loadable.tsx'),
+      path: path.resolve(__dirname, '../../../app/containers/', data.location, '{{properCase name}}/Loadable.tsx'),
       templateFile: './component/loadable.tsx.hbs',
       abortOnFail: true,
     });

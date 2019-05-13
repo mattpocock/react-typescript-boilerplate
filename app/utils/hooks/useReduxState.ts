@@ -90,7 +90,7 @@ const useReduxState = <State, Actions>({
   const [state, setState] = React.useState(initialState);
 
   const handleChange = () => {
-    setState(context.store.getState().get(key));
+    setState(context.store.getState()[key]);
   };
 
   React.useEffect(() => context.store.subscribe(handleChange), []);

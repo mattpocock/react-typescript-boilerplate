@@ -6,6 +6,7 @@
 
 'use strict';
 
+const path = require('path');
 const componentExists = require('../utils/componentExists');
 
 module.exports = {
@@ -31,33 +32,33 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../../app/components/{{properCase name}}/index.tsx',
+        path: path.resolve(__dirname, '../../../app/components/{{properCase name}}/index.tsx'),
         templateFile: './component/stateless.tsx.hbs',
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../../app/components/{{properCase name}}/stories/index.stories.tsx',
+        path: path.resolve(__dirname, '../../../app/components/{{properCase name}}/stories/index.stories.tsx'),
         templateFile: './component/index.stories.tsx.hbs',
         abortOnFail: true,
       },
     ];
     actions.push({
       type: 'add',
-      path: '../../app/components/{{properCase name}}/messages.ts',
+      path: path.resolve(__dirname, '../../../app/components/{{properCase name}}/messages.ts'),
       templateFile: './component/messages.ts.hbs',
       abortOnFail: true,
     });
     actions.push({
       type: 'add',
-      path: '../../app/components/{{properCase name}}/Loadable.tsx',
+      path: path.resolve(__dirname, '../../../app/components/{{properCase name}}/Loadable.tsx'),
       templateFile: './component/loadable.tsx.hbs',
       abortOnFail: true,
     });
 
     actions.push({
       type: 'prettify',
-      path: '/components/',
+      path: path.resolve(__dirname, '../../../app/components/'),
     });
 
     return actions;
