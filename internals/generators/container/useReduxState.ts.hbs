@@ -1,13 +1,8 @@
-/**
-* Injects reducer into useReduxState
-*
-*/
-
 import useReduxState from 'utils/hooks/useReduxState';
 
 const use{{ properCase name }}State = () =>
   useReduxState<State, Actions>({
-    key: '{{ properCase name }}',
+    key: '{{ camelCase name }}',
     initialState: {
       payload: null
     },
