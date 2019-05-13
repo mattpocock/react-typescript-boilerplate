@@ -10,7 +10,7 @@ import { FormattedHTMLMessage } from 'react-intl';
 import use{{ properCase name }}State from './use{{properCase name}}State';
 import messages from './messages';
 
-export const {{ properCase name }} = () => {
+export const {{ properCase name }} = ({}: {{ properCase name }}Props) => {
   const {{ camelCase name }} = use{{properCase name }}State();
   return (
     <div>
@@ -18,5 +18,7 @@ export const {{ properCase name }} = () => {
     </div>
   );
 }
+
+export interface {{ properCase name }}Props {}
 
 export default {{ properCase name }};
