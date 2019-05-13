@@ -1,6 +1,6 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable func-names */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useInjectSaga } from '../injectSaga';
 import { useInjectReducer } from '../injectReducer';
 import { ReactReduxContext } from 'react-redux';
@@ -89,11 +89,14 @@ const useReduxState = <State, Actions>({
 
   const [state, setState] = React.useState(initialState);
 
-  const handleChange = () => {
+  const handleChange = useCallback(() => {
     setState(context.store.getState()[key]);
-  };
+  }, [context.store, key]);
 
-  React.useEffect(() => context.store.subscribe(handleChange), []);
+  React.useEffect(() => context.store.subscribe(handleChange), [
+    context.store,
+    handleChange,
+  ]);
 
   // @ts-ignore
   return {
