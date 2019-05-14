@@ -12,7 +12,8 @@
     "rootDir": "./",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "types": ["node"]
   },
   "exclude": [
     "node_modules",

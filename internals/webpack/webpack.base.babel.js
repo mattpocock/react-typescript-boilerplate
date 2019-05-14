@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = options => ({
   mode: options.mode,
@@ -28,11 +29,10 @@ module.exports = options => ({
         },
       },
       {
-        test: /\.(ts|tsx)$/,
+        test: /(?<!stories)\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'ts-loader',
-          options: {},
+          loader: 'awesome-typescript-loader',
         },
       },
       {
@@ -122,6 +122,7 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
+    new CheckerPlugin(),
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
