@@ -2,7 +2,11 @@ import useLocalState from './useLocalState';
 import queryActionsAndState from './utils/queryActionsAndState';
 import { QueryState, QueryActions } from './useReduxQuery';
 
-const useQuery = <Request, Response>({ endpoint }: { endpoint: string }) => {
+const useLocalQuery = <Request, Response>({
+  endpoint,
+}: {
+  endpoint: string;
+}) => {
   const queryState = useLocalState<
     QueryState<Request, Response>,
     QueryActions<Request, Response>
@@ -29,4 +33,4 @@ const useQuery = <Request, Response>({ endpoint }: { endpoint: string }) => {
   };
 };
 
-export default useQuery;
+export default useLocalQuery;
