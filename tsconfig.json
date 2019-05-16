@@ -13,6 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
+    "strictNullChecks": true,
     "types": ["node"]
   },
   "exclude": [
