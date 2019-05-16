@@ -7,15 +7,16 @@
 import React from 'react';
 import { FormattedHTMLMessage } from 'react-intl';
 
+import {Grid} from '@material-ui/core';
 import use{{ properCase name }}State from './use{{properCase name}}State';
 import messages from './messages';
 
 export const {{ properCase name }} = ({}: {{ properCase name }}Props) => {
   const {{ camelCase name }} = use{{properCase name }}State();
   return (
-    <div>
+    <Grid>
       <FormattedHTMLMessage {...messages.header} />
-    </div>
+    </Grid>
   );
 }
 

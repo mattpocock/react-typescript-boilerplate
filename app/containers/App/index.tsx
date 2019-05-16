@@ -12,17 +12,15 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-
-import GlobalStyle from '../../global-styles';
+import { Grid } from '@material-ui/core';
 
 export default function App() {
   return (
-    <div>
+    <Grid>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
-    </div>
+    </Grid>
   );
 }

@@ -16,12 +16,13 @@ import 'sanitize.css/sanitize.css';
 import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon and the .htaccess file
-/* eslint-disable import/no-unresolved, import/extensions */
+/* eslint-disable */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
-/* eslint-enable import/no-unresolved, import/extensions */
+/* eslint-enable */
 
 import configureStore from './configureStore';
+import ThemeProvider from 'ThemeProvider';
 
 // Import i18n messages
 
@@ -31,11 +32,13 @@ const store = configureStore(initialState, history);
 
 // eslint-disable-next-line react/prop-types
 const AppWrapper = ({ children, messages }) => (
-  <Provider store={store}>
-    <LanguageProvider messages={messages}>
-      <ConnectedRouter history={history}>{children}</ConnectedRouter>
-    </LanguageProvider>
-  </Provider>
+  <ThemeProvider>
+    <Provider store={store}>
+      <LanguageProvider messages={messages}>
+        <ConnectedRouter history={history}>{children}</ConnectedRouter>
+      </LanguageProvider>
+    </Provider>
+  </ThemeProvider>
 );
 
 export default AppWrapper;

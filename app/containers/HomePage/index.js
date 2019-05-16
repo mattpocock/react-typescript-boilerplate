@@ -8,11 +8,12 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
+import { Typography } from '@material-ui/core';
 
 export default function HomePage() {
   return (
-    <h1>
+    <Typography>
       <FormattedMessage {...messages.header} />
-    </h1>
+    </Typography>
   );
 }
