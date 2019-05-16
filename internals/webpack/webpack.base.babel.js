@@ -4,7 +4,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = options => ({
   mode: options.mode,
@@ -23,17 +22,23 @@ module.exports = options => ({
       {
         test: /\.jsx?$/, // Transform all .js and .jsx files required somewhere with Babel
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: options.babelQuery,
-        },
+        use: [
+          'cache-loader',
+          {
+            loader: 'babel-loader',
+            options: options.babelQuery,
+          },
+        ],
       },
       {
         test: /(?<!stories)\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'awesome-typescript-loader',
-        },
+        use: [
+          'cache-loader',
+          {
+            loader: 'ts-loader',
+          },
+        ],
       },
       {
         // Preprocess our own .css files
@@ -41,7 +46,7 @@ module.exports = options => ({
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ['cache-loader', 'style-loader', 'css-loader'],
       },
       {
         // Preprocess 3rd party .css files located in node_modules
@@ -122,7 +127,6 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
-    new CheckerPlugin(),
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
