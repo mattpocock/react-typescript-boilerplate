@@ -13,6 +13,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'containers/App';
 
+/* eslint-disable */
+import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+import 'file-loader?name=.htaccess!./.htaccess';
+/* eslint-enable */
+
 // Import i18n messages
 import { translationMessages } from './i18n';
 import AppWrapper from './AppWrapper';

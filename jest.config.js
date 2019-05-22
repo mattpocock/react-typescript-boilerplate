@@ -1,11 +1,15 @@
 module.exports = {
   collectCoverageFrom: [
-    'app/**/*.{js,jsx}',
+    'app/**/*.{js,jsx,ts,tsx}',
+    '!app/**/*.d.ts',
     '!app/**/*.test.{js,jsx}',
-    '!app/*/RbGenerated*/*.{js,jsx}',
+    '!app/*/RbGenerated*/*.{js,jsx,ts,tsx}',
     '!app/app.js',
     '!app/global-styles.js',
-    '!app/*/*/Loadable.{js,jsx}',
+    '!app/*/*/Loadable.{js,jsx,ts,tsx}',
+    '!app/utils/loadable.tsx',
+    '!app/utils/*/*.{js,jsx,ts,tsx}',
+    '!app/utils/*/*/*.{js,jsx,ts,tsx}',
   ],
   coverageThreshold: {
     global: {
@@ -28,4 +32,8 @@ module.exports = {
   setupFiles: ['raf/polyfill'],
   testRegex: 'tests/.*\\.test\\.js$',
   snapshotSerializers: [],
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.jsx?$': 'babel-jest',
+  },
 };
