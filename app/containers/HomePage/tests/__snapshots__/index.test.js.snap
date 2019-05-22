@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NotFoundPage /> should render and match the snapshot 1`] = `
+exports[`<HomePage /> should render and match the snapshot 1`] = `
 <p
   class="MuiTypography-root-1 MuiTypography-body1-10"
 >
   <span>
-    This is the NotFoundPage container!
+    This is the HomePage container!
   </span>
 </p>
 `;

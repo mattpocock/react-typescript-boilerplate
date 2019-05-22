@@ -11,10 +11,10 @@
     "moduleResolution": "node",
     "rootDir": "./",
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "types": ["node"]
+    "types": ["node"],
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
